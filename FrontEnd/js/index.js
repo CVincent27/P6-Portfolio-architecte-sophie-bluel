@@ -1,5 +1,6 @@
 const gallery = document.querySelector(".gallery")
 
+//  -- TODO: rassembler les 2 func en 1
 // Récuperer les travaux 
 async function getWorks() {
     try {
@@ -8,15 +9,13 @@ async function getWorks() {
         return await responseWorks;
         
     } catch (error) {
-        console.error("Une erreur est survenue", error);
+        console.error("Une erreur est survenue pendant la récupération des travaux", error);
         
     }
 }
-
 // Afficher les travaux
 async function displayWorks() {
     const arrayWorks = await getWorks()
-    // console.log(arrayWorks);
 
     arrayWorks.forEach(work => {
         const figure = document.createElement("figure")
@@ -29,5 +28,18 @@ async function displayWorks() {
         gallery.appendChild(figure);
     });
 }
-
 displayWorks();
+
+// Récupérer et afficher les categories
+async function displayCategories() {
+    try {
+        const responseCategories = await fetch("http://localhost:5678/api/categories")
+        .then(responseCategories => responseCategories.json());
+        console.log(responseCategories);
+        
+    } catch (error) {
+        console.error("Une erreur est survenue pendant la récupération des catégories", error);
+        
+    }
+}
+displayCategories();
