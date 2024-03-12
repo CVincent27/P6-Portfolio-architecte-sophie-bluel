@@ -1,7 +1,6 @@
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
 
-//  -- TODO: rassembler les 2 func en 1
 // Récuperer les travaux et les afficher
 async function displayWorks() {
     try {
@@ -42,7 +41,21 @@ async function displayCategories() {
         
     } catch (error) {
         console.error("Une erreur est survenue pendant la récupération des catégories", error);
-        
     }
 }
 displayCategories();
+
+// Filtrer les btn par catégories
+async function filterCategories() {
+    await displayWorks();
+    const filterBtn = document.querySelectorAll(".filter-btn");
+    filterBtn.forEach(button => {
+        button.addEventListener("click", (e) => {
+            console.log(e.target.id);
+        });
+    });
+
+     
+    
+}
+filterCategories();
