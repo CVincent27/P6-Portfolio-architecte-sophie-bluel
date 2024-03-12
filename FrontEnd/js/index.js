@@ -1,7 +1,7 @@
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
 
-// Récuperer les travaux et les afficher
+// ----- Récuperer les travaux et les afficher -----
 async function displayWorks() {
     try {
         const responseWorks = await fetch("http://localhost:5678/api/works")
@@ -24,8 +24,9 @@ async function displayWorks() {
 }
 displayWorks();
 
+// TODO : voir pour mettre la fonction filtercategories directement dans displayCategories
 
-// Récupérer et afficher les categories
+// ----- Récupérer et afficher les categories -----
 async function displayCategories() {
     try {
         const responseCategories = await fetch("http://localhost:5678/api/categories")
@@ -45,13 +46,27 @@ async function displayCategories() {
 }
 displayCategories();
 
-// Filtrer les btn par catégories
+// ----- Filtrer les btn par catégories -----
 async function filterCategories() {
-    await displayWorks();
+    // Permet d'attendre que les travaux soient affichés
+    const filterWorks = await displayWorks();
     const filterBtn = document.querySelectorAll(".filter-btn");
-    filterBtn.forEach(button => {
+    filterBtn.forEach((button) => {
         button.addEventListener("click", (e) => {
-            console.log(e.target.id);
+            let btnId = e.target.id;
+            // console.log(btnId);
+            gallery.innerHTML = "";
+
+
+            // gallery.innerHTML = "";
+            // if (btnId !== "0") {
+            //     const checkFilterWorks = filterWorks.filter((works) => {
+            //         return works.categoryId == btnId;
+            //     });
+            //     checkFilterWorks.forEach(works => {
+            //          createWorks(works);
+            //     });
+            // }
         });
     });
 
