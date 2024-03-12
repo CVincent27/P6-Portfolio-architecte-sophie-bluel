@@ -147,7 +147,8 @@ li:hover {
 	margin-right: 8px;
 }
 
-.filter-btn.active {
+/* A modif */
+.filter-btn:active {
 	color: white;
 	background: #1D6154;
 }
