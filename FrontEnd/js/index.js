@@ -1,7 +1,6 @@
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
 
-//  -- TODO: rassembler les 2 func en 1
 // Récuperer les travaux 
 async function getWorks() {
     try {
@@ -80,6 +79,8 @@ async function filterCategories() {
                     createWorks(work);
                 });
 
+            }else{
+                displayWorks();
             }
         });
     });
