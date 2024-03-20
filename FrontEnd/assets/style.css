@@ -230,6 +230,17 @@ form a {
 	text-decoration: underline;
 	color: #3D3D3D;
 }
+/* message erreur */
+.message-error-login {
+	background-color: white;
+	color: #D65353;
+	padding: 4%;
+	border: 2px dashed  #D65353;
+	font-weight: 700;
+	text-align: center;
+	width: 100%;
+	margin : 10px 0 10px 0;
+}
 
 /* Footer */
 
