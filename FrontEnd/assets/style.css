@@ -190,6 +190,11 @@ nav li:hover a {
 #contact h2{
 	margin-bottom: 20px;
 }
+
+#contact span {
+	color: red;
+}
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
