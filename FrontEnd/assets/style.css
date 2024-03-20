@@ -179,42 +179,36 @@ nav li:hover a {
 
 /* Partie log in */
 
-#contact {
+form {
 	width: 50%;
 	margin: auto;
-}
-#contact > * {
-	text-align: center;
-
-}
-#contact h2{
-	margin-bottom: 20px;
-}
-
-#contact span {
-	color: red;
-}
-
-#contact form {
-	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+form h2{
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+form span {
+	color: red;
+}
+
+form input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+form label {
 	margin: 2em 0 1em 0;
 	font-size: 14px;
 	font-weight: 500;
 	color: #3D3D3D;
 }
-#contact textarea {
+form textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -230,10 +224,11 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
-.forgetPass {
+form a {
 	display: flex;
 	justify-content: center;
 	text-decoration: underline;
+	color: #3D3D3D;
 }
 
 /* Footer */
