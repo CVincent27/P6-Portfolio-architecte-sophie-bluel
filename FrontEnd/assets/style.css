@@ -134,7 +134,6 @@ nav li:hover a {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 
 /* Filtres */
@@ -178,7 +177,6 @@ nav li:hover a {
 }
 
 /* Partie log in */
-
 form {
 	width: 50%;
 	margin: auto;
@@ -243,18 +241,18 @@ form a {
 	margin : 10px 0 10px 0;
 }
 
-/** mode edition modale **/
+/* class en display none quand non connecté */
 .edition-mode {
 	/* display none */
 	display: flex;
-	width: 100%;
 }
 
 .edition-mode.active {
 	display: contents;
 }
-
+/* Bandeau edition mode */
 #edition-header {
+	gap: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -266,21 +264,30 @@ form a {
 	box-sizing: border-box;
 }
 
-.edition-mode i {
-	height: 18px;
-	width: 18px;
-	color: wheat;
+.edition-header i {
+	color: white;
 }
 
-.edition-mode span{
+.edition-header span{
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 19px;
-	margin: 0 21px 0 13px;
+}
+
+/* Btn édition portfolio */
+#edition-portfolio {
+	margin-bottom: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
+#black-logo {
+	color: black;
 }
 
 /* Footer */
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
