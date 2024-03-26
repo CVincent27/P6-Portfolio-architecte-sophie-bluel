@@ -230,6 +230,7 @@ form a {
 	text-decoration: underline;
 	color: #3D3D3D;
 }
+
 /* message erreur */
 .message-error-login {
 	background-color: white;
@@ -240,6 +241,42 @@ form a {
 	text-align: center;
 	width: 100%;
 	margin : 10px 0 10px 0;
+}
+
+/** mode edition modale **/
+.edition-mode {
+	/* display none */
+	display: flex;
+	width: 100%;
+}
+
+.edition-mode.active {
+	display: contents;
+}
+
+#edition-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 0;
+	height : 59px;
+	background-color: black;
+	color: white;
+	box-sizing: border-box;
+}
+
+.edition-mode i {
+	height: 18px;
+	width: 18px;
+	color: wheat;
+}
+
+.edition-mode span{
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	margin: 0 21px 0 13px;
 }
 
 /* Footer */

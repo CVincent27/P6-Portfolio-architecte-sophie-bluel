@@ -7,14 +7,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script type="module" src="./js/index.js"></script>
 </head>
 
 <body>
+	<!-- Modale -->
+	<aside id="modal-projet" class="modal">
+	</aside>
+	<aside id="modal-projet-photo" class="modal">
+	</aside>
+	<!-- Banniere mode edition-->
+	<div class="edition-mode">
+		<div id="edition-header" >
+			<i class="fa-solid fa-pen-to-square"></i>
+			<span>Mode édition</span>
+		</div>
+	</div>
+
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
@@ -32,6 +44,12 @@
 				<img src="./assets/images/sophie-bluel.png" alt="">
 			</figure>
 			<article>
+				<div class="edition-mode" id="edition-article">
+					<button type="button">
+						<i class="fa-solid fa-pen-to-square"></i>
+						<span>modifier</span>
+					</button>
+				</div>
 				<h2>Designer d'espace</h2>
 				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
 					finale du chantier.</p>
