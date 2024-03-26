@@ -176,6 +176,13 @@ nav li:hover a {
 	width: 100%;
 }
 
+/* Footer */
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+
 /* Partie log in */
 form {
 	width: 50%;
@@ -241,6 +248,7 @@ form a {
 	margin : 10px 0 10px 0;
 }
 
+
 /* class en display none quand non connecté */
 .edition-mode {
 	/* display none */
@@ -250,6 +258,7 @@ form a {
 .edition-mode.active {
 	display: contents;
 }
+
 /* Bandeau edition mode */
 #edition-header {
 	gap: 20px;
@@ -283,14 +292,14 @@ form a {
 	gap: 30px;
 }
 
-#black-logo {
-	color: black;
-}
-
-/* Footer */
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em
+/* modale*/
+.modal {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0,0, 0.4);
 }
 
