@@ -35,10 +35,6 @@ async function displayWorks() {
 }
 displayWorks();
 
-
-
-// TODO : voir pour mettre la fonction filtercategories directement dans displayCategories
-
 // ----- Récupérer et afficher les categories -----
 async function displayCategories() {
     try {
@@ -92,3 +88,18 @@ filterCategories();
 // Affichage
 const token = sessionStorage.getItem("Token");
 console.log(token)
+
+if (token){
+    const modeEdition = document.querySelectorAll(".edition-mode");
+    for (let data of modeEdition) {
+        data.classList.add("active"); 
+    };
+    const modeEditionFilter = document.querySelector(".filters");
+    modeEditionFilter.style.display = "none";
+    const logout = document.getElementById("login-logout");
+    logout.setAttribute("href", "./index.html");
+    logout.innerText = "logout";
+    logout.addEventListener("click", function () {
+        sessionStorage.removeItem("Token");
+    });
+};
