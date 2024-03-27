@@ -179,8 +179,10 @@ nav li:hover a {
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
+	font-weight: 300;
 }
+
 
 /* Partie log in */
 form {
@@ -299,7 +301,6 @@ form a {
 /* modale*/
 .modal {
 	position: fixed;
-	display: none;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -307,3 +308,22 @@ form a {
 	background: rgba(0, 0,0, 0.4);
 }
 
+.modal-container {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	max-width: 630px;
+	border-radius: 10px;
+	padding: 40px 60px;
+	margin: 150px auto;
+
+
+}
+
+.first-modal-close {
+
+}
+
+.modal-container h3 {
+
+}
