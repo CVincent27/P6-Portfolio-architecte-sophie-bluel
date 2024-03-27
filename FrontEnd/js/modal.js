@@ -13,7 +13,7 @@ imgModalContainer.className = "fa-solid fa-xmark";
 // titre de la modale
 const h3ModalContainer = document.createElement("h3");
 h3ModalContainer.innerText = "Galerie photo";
-console.log(h3ModalContainer);
+// console.log(h3ModalContainer);
 
 const galleryModalContainer = document.createElement("div");
 galleryModalContainer.className = "gallery-modal";

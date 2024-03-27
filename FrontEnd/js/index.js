@@ -86,3 +86,9 @@ async function filterCategories() {
     });
 }
 filterCategories();
+
+// test mode edition
+
+// Affichage
+const token = sessionStorage.getItem("Token");
+console.log(token)
