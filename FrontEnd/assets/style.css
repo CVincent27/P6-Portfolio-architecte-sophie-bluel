@@ -251,8 +251,7 @@ form a {
 
 /* class en display none quand non connecté */
 .edition-mode {
-	/* display none */
-	display: flex;
+	display: none;
 }
 
 .edition-mode.active {
