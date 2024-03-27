@@ -48,7 +48,6 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -282,9 +281,15 @@ form a {
 	line-height: 19px;
 }
 
+/* wrapper */
+.wrapper {
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
 /* Btn édition portfolio */
 #edition-portfolio {
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -94,8 +94,10 @@ if (token){
     for (let data of modeEdition) {
         data.classList.add("active"); 
     };
+    // display none sur filters
     const modeEditionFilter = document.querySelector(".filters");
     modeEditionFilter.style.display = "none";
+    // logout
     const logout = document.getElementById("login-logout");
     logout.setAttribute("href", "./index.html");
     logout.innerText = "logout";
