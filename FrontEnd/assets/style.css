@@ -343,3 +343,13 @@ form a {
 	width: 100%;
 	height: 140px;
 }
+
+#remove-btn {
+	position: relative;
+	top: -135px;
+	left: 88px;
+	padding: 5px;
+	color: white;
+	background-color: black;
+	border-radius: 2px;
+}
