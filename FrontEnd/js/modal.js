@@ -17,10 +17,17 @@ const h3ModalContainer = document.createElement("h3");
 h3ModalContainer.innerText = "Galerie photo";
 // console.log(h3ModalContainer);
 
+
 const galleryModalContainer = document.createElement("div");
 galleryModalContainer.className = "gallery-modal";
 const hrModalContainer = document.createElement("hr");
 
+
+// remove photo
+
+
+
+// add photo
 const btnAddPhoto = document.createElement("input");
 btnAddPhoto.type = "submit"
 btnAddPhoto.id = "btn-add-photo";
@@ -32,9 +39,33 @@ modalContainer.append(
     h3ModalContainer,
     galleryModalContainer,
     hrModalContainer,
-    btnAddPhoto
-
+    btnAddPhoto,
+    
 );
+
+// Affichage des travaux
+export async function createWorksModal(work) {
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const removeBtn = document.createElement("i");
+    img.src = work.imageUrl;
+    removeBtn.className = "fa-solid fa-trash-can";
+    removeBtn.id = "remove-btn";
+    figure.append(img);
+    figure.append(removeBtn);
+    const galleryModal = document.querySelector(".gallery-modal");
+    galleryModal.appendChild(figure);
+    
+}
+
+// Afficher les travaux dans la modale
+export async function displayWorksModal() {
+    const arrayWorks = await getWorks();
+    arrayWorks.forEach(work => {
+        createWorksModal(work);
+    });
+}
+displayWorksModal()
 
 //fonctionnement modale
 // récupère la 1ere modale
@@ -63,24 +94,3 @@ window.addEventListener("click", function (event) {
     }
 });
 
-// Affichage des travaux
-export async function createWorksModal(work) {
-    const figure = document.createElement("figure");
-    const img = document.createElement("img");
-    const figcaption = document.createElement("figcaption");
-    img.src = work.imageUrl;
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
-    const galleryModal = document.querySelector(".gallery-modal");
-    galleryModal.appendChild(figure);
-    
-}
-
-// Afficher les travaux dans la modale
-export async function displayWorksModal() {
-    const arrayWorks = await getWorks();
-    arrayWorks.forEach(work => {
-        createWorksModal(work);
-    });
-}
-displayWorksModal()
