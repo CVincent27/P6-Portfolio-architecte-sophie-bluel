@@ -1,8 +1,9 @@
+
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
 
 // Récuperer les travaux 
-async function getWorks() {
+export async function getWorks() {
     try {
         const responseWorks = await fetch("http://localhost:5678/api/works")
         .then(responseWorks => responseWorks.json());
@@ -14,7 +15,7 @@ async function getWorks() {
     }
 }
 
-async function createWorks(work) {
+export async function createWorks(work) {
     const figure = document.createElement("figure")
     const img = document.createElement("img")
     const figcaption = document.createElement("figcaption")

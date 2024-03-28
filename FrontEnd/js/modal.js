@@ -1,3 +1,5 @@
+import { getWorks, createWorks } from './index.js';
+
 // ---- Première modale ----
 // récupération de la modal html
 const modalProjet = document.querySelector("#modal-projet");
@@ -24,9 +26,6 @@ btnAddPhoto.href = "#modal-projet-photo";
 btnAddPhoto.id = "btn-add-photo";
 btnAddPhoto.innerText = "Ajouter une photo";
 
-const btnRemoveGallery = document.createElement("button");
-btnRemoveGallery.innerText = "Supprimer la galerie";
-
 modalProjet.append(modalContainer);
 modalContainer.append(
     imgModalContainer,
@@ -34,7 +33,6 @@ modalContainer.append(
     galleryModalContainer,
     hrModalContainer,
     btnAddPhoto,
-    btnRemoveGallery
 );
 
 //fonctionnement modale
@@ -64,5 +62,24 @@ window.addEventListener("click", function (event) {
     }
 });
 
-// affichage travaux dans modale
-function displayWorksModale(works)
+// Affichage des travaux
+export async function createWorksModal(work) {
+    const figure = document.createElement("figure");
+    const img = document.createElement("img");
+    const figcaption = document.createElement("figcaption");
+    img.src = work.imageUrl;
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    const galleryModal = document.querySelector(".gallery-modal");
+    galleryModal.appendChild(figure);
+}
+
+// Afficher les travaux dans la modale
+export async function displayWorksModal() {
+    const arrayWorks = await getWorks();
+    arrayWorks.forEach(work => {
+        createWorksModal(work);
+    });
+}
+
+displayWorksModal()
