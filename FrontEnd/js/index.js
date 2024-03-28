@@ -1,21 +1,10 @@
+import { getWorks, getCategories } from "./service.js"
 
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
+const arrayWorks = await getWorks()
 
-// Récuperer les travaux 
-export async function getWorks() {
-    try {
-        const responseWorks = await fetch("http://localhost:5678/api/works")
-        .then(responseWorks => responseWorks.json());
-        return await responseWorks;
-
-    } catch (error) {
-        console.error("Une erreur est survenue pendant la récupération des travaux", error);
-
-    }
-}
-
-export async function createWorks(work) {
+function createWorkFigure(work) {
     const figure = document.createElement("figure")
     const img = document.createElement("img")
     const figcaption = document.createElement("figcaption")
@@ -26,74 +15,59 @@ export async function createWorks(work) {
     gallery.appendChild(figure);
 }
 
+function createCategoryBtn(category) {
+    const btn = document.createElement("button");
+    btn.textContent = category.name;
+    btn.id = category.id;
+    btn.classList.add("filter-btn");
+    filter.appendChild(btn);
+    btn.addEventListener("click", filterCategories)
+}
+
+
 
 // Afficher les travaux
-async function displayWorks() {
-    const arrayWorks = await getWorks()
-    arrayWorks.forEach(work => {
-        createWorks(work);
-    });
+async function displayWorks(works) {
+    works.forEach(createWorkFigure)
 }
-displayWorks();
+displayWorks(arrayWorks);
 
 // ----- Récupérer et afficher les categories -----
 async function displayCategories() {
-    try {
-        const responseCategories = await fetch("http://localhost:5678/api/categories")
-        .then(responseCategories => responseCategories.json());
-        
-        responseCategories.forEach(category => {
-            const btn = document.createElement("button");
-            btn.textContent = category.name;
-            btn.id = category.id;
-            btn.classList.add("filter-btn");
-            filter.appendChild(btn);
-        })
-        
-    } catch (error) {
-        console.error("Une erreur est survenue pendant la récupération des catégories", error);
-    }
+    const arrayCategories = await getCategories()
+
+    arrayCategories.forEach(createCategoryBtn)
+
 }
 displayCategories();
 
 // ----- Filtrer les btn par catégories -----
-async function filterCategories() {
+async function filterCategories(e) {
     // Permet d'attendre que les travaux soient affichés
-    const filterWorks = await getWorks();
+    let filterWorks = await getWorks();
 
-    const filterBtn = document.querySelectorAll(".filter-btn");
-    filterBtn.forEach((button) => {
-        button.addEventListener("click", (e) => {
-            let btnId = e.target.id;
-            // console.log(btnId);
-            gallery.innerHTML = "";
-            if (btnId !== "0") {
-                const checkFilterWorks = filterWorks.filter((work) => {
-                    return work.categoryId == btnId;
-                });
-                console.log(checkFilterWorks);
-                checkFilterWorks.forEach(work => {
-                    createWorks(work);
-                });
-
-            }else{
-                displayWorks();
-            }
+    // probleme btn id
+    let btnId = e.target.id;
+    gallery.innerHTML = "";
+    if (btnId !== "0") {
+        filterWorks = filterWorks.filter((work) => {
+            return work.categoryId == btnId;
         });
-    });
+    } 
+    displayWorks(filterWorks);
 }
 filterCategories();
 
 // test mode edition
 
 // Affichage
-const token = sessionStorage.getItem("Token");
+const token = localStorage.getItem("Token");
 console.log(token)
 
-if (token){
+if (token) {
     const modeEdition = document.querySelectorAll(".edition-mode");
     for (let data of modeEdition) {
-        data.classList.add("active"); 
+        data.classList.add("active");
     };
     // display none sur filters
     const modeEditionFilter = document.querySelector(".filters");
@@ -103,6 +77,6 @@ if (token){
     logout.setAttribute("href", "./index.html");
     logout.innerText = "logout";
     logout.addEventListener("click", function () {
-        sessionStorage.removeItem("Token");
+        localStorage.removeItem("Token");
     });
 };
