@@ -37,7 +37,7 @@ form.addEventListener("submit", async function (event) {
 
         // Retour en fonction du statut de la réponse
         if (reponseState) {
-            sessionStorage.setItem("Token", reponseToken);
+            localStorage.setItem("Token", reponseToken);
             window.location.replace("index.html");
         } else {
             inputPassword.insertAdjacentElement("afterend",errorMsg);
