@@ -198,7 +198,7 @@ form span {
 	color: red;
 }
 
-form input {
+input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -226,6 +226,10 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+#btn-add-photo {
+	width: 240px;
+}
+
 form a {
 	display: flex;
 	justify-content: center;
@@ -237,8 +241,7 @@ form a {
 .message-error-login {
 	background-color: white;
 	color: #D65353;
-	padding: 4%;
-	border: 2px dashed  #D65353;
+	padding: 4%0;
 	font-weight: 700;
 	text-align: center;
 	width: 100%;
