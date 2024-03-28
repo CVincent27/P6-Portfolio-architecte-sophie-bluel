@@ -3,47 +3,14 @@ import { getWorks, deleteWork } from './service.js';
 // ---- Première modale ----
 // récupération de la modal html
 const modalProjet = document.querySelector("#modal-projet");
+const modalContainer = document.querySelector(".modal-container");
+const galleryModalContainer = document.querySelector(".gallery-modal");
 
-const modalContainer = document.createElement("div");
-modalContainer.className = "modal-container";
-
-// logo font awesome X
-const imgModalContainer = document.createElement("i");
-imgModalContainer.id = "modal-close";
-imgModalContainer.className = "fa-solid fa-xmark";
-
-// titre de la modale
-const h3ModalContainer = document.createElement("h3");
-h3ModalContainer.innerText = "Galerie photo";
-// console.log(h3ModalContainer);
-
-
-const galleryModalContainer = document.createElement("div");
-galleryModalContainer.className = "gallery-modal";
-const hrModalContainer = document.createElement("hr");
-
-
-// remove photo
-
-
-
-// add photo
-const btnAddPhoto = document.createElement("input");
-btnAddPhoto.type = "submit"
-btnAddPhoto.id = "btn-add-photo";
-btnAddPhoto.value = "Ajouter une photo";
 
 modalProjet.append(modalContainer);
-modalContainer.append(
-    imgModalContainer,
-    h3ModalContainer,
-    galleryModalContainer,
-    hrModalContainer,
-    btnAddPhoto,
-    
-);
+modalContainer.append(galleryModalContainer);
 
-// Affichage des travaux
+// Affichage et suppr des travaux
  function createWorksModal(work) {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
@@ -84,18 +51,18 @@ var btnCloseModal = document.getElementById("modal-close");
 
 // ouverture de la modale au click
 btnOpenModal.addEventListener("click", function () {
-    firstModal.style.display = "block";
+    firstModal.showModal();
 });
 
 // fermeture de la modale
 btnCloseModal.addEventListener("click", function () {
-    firstModal.style.display = "none";
+    firstModal.close();
 });
 
 // fermeture de la modale si click en dehors
 window.addEventListener("click", function (event) {
     if (event.target == firstModal) {
-        firstModal.style.display = "none";
+        firstModal.close();
     }
 });
 
