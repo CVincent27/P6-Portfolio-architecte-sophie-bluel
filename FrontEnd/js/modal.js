@@ -21,10 +21,10 @@ const galleryModalContainer = document.createElement("div");
 galleryModalContainer.className = "gallery-modal";
 const hrModalContainer = document.createElement("hr");
 
-const btnAddPhoto = document.createElement("a");
-btnAddPhoto.href = "#modal-projet-photo";
+const btnAddPhoto = document.createElement("input");
+btnAddPhoto.type = "submit"
 btnAddPhoto.id = "btn-add-photo";
-btnAddPhoto.innerText = "Ajouter une photo";
+btnAddPhoto.value = "Ajouter une photo";
 
 modalProjet.append(modalContainer);
 modalContainer.append(
@@ -32,7 +32,8 @@ modalContainer.append(
     h3ModalContainer,
     galleryModalContainer,
     hrModalContainer,
-    btnAddPhoto,
+    btnAddPhoto
+
 );
 
 //fonctionnement modale
@@ -72,6 +73,7 @@ export async function createWorksModal(work) {
     figure.appendChild(figcaption);
     const galleryModal = document.querySelector(".gallery-modal");
     galleryModal.appendChild(figure);
+    
 }
 
 // Afficher les travaux dans la modale
@@ -81,5 +83,4 @@ export async function displayWorksModal() {
         createWorksModal(work);
     });
 }
-
 displayWorksModal()
