@@ -1,4 +1,4 @@
-import { getWorks, createWorks } from './index.js';
+import { getWorks, deleteWork } from './service.js';
 
 // ---- Première modale ----
 // récupération de la modal html
@@ -44,17 +44,22 @@ modalContainer.append(
 );
 
 // Affichage des travaux
-export async function createWorksModal(work) {
+ function createWorksModal(work) {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
     const removeBtn = document.createElement("i");
     img.src = work.imageUrl;
     removeBtn.className = "fa-solid fa-trash-can";
-    removeBtn.id = "remove-btn";
     figure.append(img);
     figure.append(removeBtn);
     const galleryModal = document.querySelector(".gallery-modal");
     galleryModal.appendChild(figure);
+    removeBtn.addEventListener("click", async () => {
+        await deleteWork(work.id)
+        // Supprimer manuellement
+        figure.remove()
+
+    })
     
 }
 
