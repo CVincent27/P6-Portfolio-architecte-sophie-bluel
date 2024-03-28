@@ -313,14 +313,16 @@ form a {
 	border-radius: 10px;
 	padding: 40px 60px;
 	margin: 150px auto;
-
-
 }
 
-.first-modal-close {
-
+#modal-close {
+	align-self: flex-end;
+	width: 16px;
+	height: 16px;
 }
 
 .modal-container h3 {
-
+	font-size: 26px;
+	line-height: 30px;
+	margin: auto;
 }

@@ -7,7 +7,7 @@ modalContainer.className = "modal-container";
 
 // logo font awesome X
 const imgModalContainer = document.createElement("i");
-imgModalContainer.id = "first-modal-close";
+imgModalContainer.id = "modal-close";
 imgModalContainer.className = "fa-solid fa-xmark";
 
 // titre de la modale
@@ -45,7 +45,7 @@ var firstModal = document.getElementById("modal-projet");
 var btnOpenModal = document.getElementById("modal-projet-btn");
 
 // récupère le bouton qui ferme la modale
-var btnCloseModal = document.getElementById("first-modal-close");
+var btnCloseModal = document.getElementById("modal-close");
 
 // ouverture de la modale au click
 btnOpenModal.addEventListener("click", function () {
@@ -57,9 +57,12 @@ btnCloseModal.addEventListener("click", function () {
     firstModal.style.display = "none";
 });
 
-// fermeture de la modale si clic en dehors de la modale
+// fermeture de la modale si click en dehors
 window.addEventListener("click", function (event) {
     if (event.target == firstModal) {
         firstModal.style.display = "none";
     }
 });
+
+// affichage travaux dans modale
+function displayWorksModale(works)
