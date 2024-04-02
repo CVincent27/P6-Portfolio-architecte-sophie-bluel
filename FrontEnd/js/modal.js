@@ -1,11 +1,11 @@
 import { getWorks, deleteWork } from './service.js';
 
 // ---- Première modale ----
-// récupération de la modal html
+
+// récupération de la modale html
 const modalProjet = document.querySelector("#modal-projet");
 const modalContainer = document.querySelector(".modal-container");
 const galleryModalContainer = document.querySelector(".gallery-modal");
-
 
 modalProjet.append(modalContainer);
 modalContainer.append(galleryModalContainer);
@@ -21,11 +21,10 @@ modalContainer.append(galleryModalContainer);
     figure.append(removeBtn);
     const galleryModal = document.querySelector(".gallery-modal");
     galleryModal.appendChild(figure);
+    // TODO: mettre la gallery au dessus de l'input
     removeBtn.addEventListener("click", async () => {
         await deleteWork(work.id)
-        // Supprimer manuellement
         figure.remove()
-
     })
     
 }
@@ -38,6 +37,37 @@ export async function displayWorksModal() {
     });
 }
 displayWorksModal()
+
+// ---- Seconde modale ----
+
+// récupère la seconde modale
+const modalProjetPhoto = document.querySelector("#modal-projet-photo");
+// récupère le bouton qui ouvre la seconde modale depuis la première modale
+const btnOpenSecondModal = document.querySelector("#btn-add-photo");
+// récupère le bouton qui ferme la seconde modale
+const btnCloseSecondModal = document.querySelector("#modal-projet-photo #modal-close");
+
+// ouverture de la seconde modale 
+btnOpenSecondModal.addEventListener("click", function () {
+    // Ferme la première modale
+    modalProjet.close();
+    // Ouvre la seconde modale
+    modalProjetPhoto.showModal();
+});
+
+// fermeture de la seconde modale
+btnCloseSecondModal.addEventListener("click", function () {
+    modalProjetPhoto.close();
+});
+
+// fermeture de la seconde modale si click en dehors
+window.addEventListener("click", function (event) {
+    if (event.target == modalProjetPhoto) {
+        modalProjetPhoto.close();
+    }
+});
+
+
 
 //fonctionnement modale
 // récupère la 1ere modale
