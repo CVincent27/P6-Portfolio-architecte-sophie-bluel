@@ -310,20 +310,33 @@ form a {
 	background-color: white;
 	max-width: 630px;
 	border-radius: 10px;
-	padding: 40px 60px;
+	padding: 20px 30px;
 	margin: 150px auto;
+}
+
+.container-icon {
+	display: flex;
+	justify-content: space-between;
 }
 
 #modal-close {
 	align-self: flex-end;
-	width: 16px;
-	height: 16px;
+}
+
+#modal-back {
+
 }
 
 .modal-container h3 {
 	font-size: 26px;
-	line-height: 30px;
-	margin: auto;
+	margin: 20px auto;
+}
+
+.content-container {
+	padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gallery-modal {
