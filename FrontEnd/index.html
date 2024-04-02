@@ -23,24 +23,30 @@
 			<i class="fa-solid fa-xmark" id="modal-close"></i>
 			<h3>Galerie photo</h3>
 
-			<div class="gallery-modal"></div>
+			<div class="content-container">
+				<div class="gallery-modal"></div>
 
-			<hr />
+				<hr />
 
-			<a href="#modal-projet-photo">
-				<input type="submit" id="btn-add-photo" value="Ajouter une photo">
-			</a>
-			
+				<a href="#modal-projet-photo">
+					<input type="submit" id="btn-add-photo" value="Ajouter une photo">
+				</a>
+			</div>
 		</div>
 	</dialog>
 
 	<dialog id="modal-projet-photo" class="modal">
 		<div class="modal-container">
-			<i class="fa-solid fa-xmark" id="modal-close"></i>
+			<div class="container-icon">
+				<i class="fa-solid fa-arrow-left" id="modal-back"></i>
+				<i class="fa-solid fa-xmark" id="modal-close"></i>
+			</div>
 			<h3>Ajout photo</h3>
 
-			<hr />
-			<input type="submit" id="btn-add-photo" value="Ajouter une photo">
+			<div class="content-container">
+				<hr />
+				<input type="submit" id="btn-add-photo" value="Valider">
+			</div>
 		</div>
 	</dialog>
 	
