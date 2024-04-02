@@ -27,10 +27,7 @@
 				<div class="gallery-modal"></div>
 
 				<hr />
-
-				<a href="#modal-projet-photo">
-					<input type="submit" id="btn-add-photo" value="Ajouter une photo">
-				</a>
+				<input type="submit" class="btn-add-photo" value="Ajouter une photo">
 			</div>
 		</div>
 	</dialog>
@@ -43,9 +40,16 @@
 			</div>
 			<h3>Ajout photo</h3>
 
-			<div class="content-container">
+			<div class="content-container" id="form-photo">
+				<div class="form-add-photo">
+					<form method="post" id="add-photo">
+
+					</form>
+				</div>
+
+			
 				<hr />
-				<input type="submit" id="btn-add-photo" value="Valider">
+				<input type="submit" class="btn-add-photo" value="Valider">
 			</div>
 		</div>
 	</dialog>
@@ -99,7 +103,7 @@
 				</div>
 
 				<div class="filters">
-					<button id="0" class="filter-btn">Tous</button>
+					<button id="0" class="filter-btn select">Tous</button>
 				</div>
 
 				<div class="gallery">
