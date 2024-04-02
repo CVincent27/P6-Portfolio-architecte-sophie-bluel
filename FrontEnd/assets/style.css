@@ -341,6 +341,10 @@ form a {
 	height: 140px;
 }
 
+hr {
+	width: 100%;
+}
+
 #btn-add-photo {
 	width: 240px;
 }
