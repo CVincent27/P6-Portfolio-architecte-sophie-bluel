@@ -43,9 +43,7 @@ displayWorksModal()
 // récupère la seconde modale
 const modalProjetPhoto = document.querySelector("#modal-projet-photo");
 // ouvrir 2nd depuis 1ere modale
-const btnOpenSecondModal = document.querySelector("#btn-add-photo");
-// fermer 2nd modal
-// const btnCloseModal = document.querySelector("#modal-projet-photo #modal-close");
+const btnOpenSecondModal = document.querySelector(".btn-add-photo");
 
 // ouverture de la seconde modale (via 1ere modal)
 btnOpenSecondModal.addEventListener("click", function () {
@@ -55,16 +53,8 @@ btnOpenSecondModal.addEventListener("click", function () {
     modalProjetPhoto.showModal();
 });
 
-// // fermeture de la seconde modale
-// btnCloseSecondModal.addEventListener("click", function () {
-//     modalProjetPhoto.close();
-// });
-
-
-
 
 //fonctionnement modale
-
 // Open modale
 var btnOpenModal = document.getElementById("modal-projet-btn");
 
