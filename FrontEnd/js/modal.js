@@ -42,12 +42,12 @@ displayWorksModal()
 
 // récupère la seconde modale
 const modalProjetPhoto = document.querySelector("#modal-projet-photo");
-// récupère le bouton qui ouvre la seconde modale depuis la première modale
+// ouvrir 2nd depuis 1ere modale
 const btnOpenSecondModal = document.querySelector("#btn-add-photo");
-// récupère le bouton qui ferme la seconde modale
-const btnCloseSecondModal = document.querySelector("#modal-projet-photo #modal-close");
+// fermer 2nd modal
+// const btnCloseModal = document.querySelector("#modal-projet-photo #modal-close");
 
-// ouverture de la seconde modale 
+// ouverture de la seconde modale (via 1ere modal)
 btnOpenSecondModal.addEventListener("click", function () {
     // Ferme la première modale
     modalProjet.close();
@@ -55,44 +55,50 @@ btnOpenSecondModal.addEventListener("click", function () {
     modalProjetPhoto.showModal();
 });
 
-// fermeture de la seconde modale
-btnCloseSecondModal.addEventListener("click", function () {
-    modalProjetPhoto.close();
-});
+// // fermeture de la seconde modale
+// btnCloseSecondModal.addEventListener("click", function () {
+//     modalProjetPhoto.close();
+// });
 
-// fermeture de la seconde modale si click en dehors
-window.addEventListener("click", function (event) {
-    if (event.target == modalProjetPhoto) {
-        modalProjetPhoto.close();
-    }
-});
 
 
 
 //fonctionnement modale
-// récupère la 1ere modale
-var firstModal = document.getElementById("modal-projet");
 
-// récupère le bouton qui ouvre la modale
+// Open modale
 var btnOpenModal = document.getElementById("modal-projet-btn");
 
-// récupère le bouton qui ferme la modale
-var btnCloseModal = document.getElementById("modal-close");
+// btn close 1rst modale
+var btnCloseFirstModal = document.getElementById("modal-close");
+// btn close 2nd modale
+var btnCloseSecondModal = document.querySelector("#modal-projet-photo #modal-close");
+// btn back
+var btnBackModal = document.getElementById("modal-back");
 
 // ouverture de la modale au click
 btnOpenModal.addEventListener("click", function () {
-    firstModal.showModal();
+    modalProjet.showModal();
 });
 
-// fermeture de la modale
-btnCloseModal.addEventListener("click", function () {
-    firstModal.close();
+// fermeture 1ere modale
+btnCloseFirstModal.addEventListener("click", function () {
+    modalProjet.close();
+});
+// fermeture 2nd modale
+btnCloseSecondModal.addEventListener("click", function () {
+    modalProjetPhoto.close();
 });
 
 // fermeture de la modale si click en dehors
 window.addEventListener("click", function (event) {
-    if (event.target == firstModal) {
-        firstModal.close();
+    if (event.target == modalProjet || event.target == modalProjetPhoto) {
+        event.target.close();
     }
+});
+
+// revenir en arrière (2nd -> 1st)
+btnBackModal.addEventListener("click", function () {
+    modalProjetPhoto.close();
+    modalProjet.showModal();
 });
 
