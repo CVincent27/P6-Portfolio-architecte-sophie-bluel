@@ -153,11 +153,10 @@ nav li:hover a {
 }
 
 /* A modif */
-.filter-btn:active {
+.select {
 	color: white;
 	background: #1D6154;
 }
-
 
 .gallery {
 	width: 100%;
@@ -323,13 +322,14 @@ form a {
 	align-self: flex-end;
 }
 
-#modal-back {
-
-}
-
 .modal-container h3 {
 	font-size: 26px;
 	margin: 20px auto;
+}
+
+/* Formulaire ajout photo */
+.form-add-photo {
+	background-color: #E8F1F6;
 }
 
 .content-container {
@@ -337,6 +337,10 @@ form a {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#form-photo {
+	align-items: normal;
 }
 
 .gallery-modal {
@@ -358,7 +362,7 @@ hr {
 	width: 100%;
 }
 
-#btn-add-photo {
+.btn-add-photo {
 	width: 240px;
 }
 
