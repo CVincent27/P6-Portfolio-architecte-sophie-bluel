@@ -316,20 +316,66 @@ form a {
 .container-icon {
 	display: flex;
 	justify-content: space-between;
+	font-size: 21px;
 }
 
 #modal-close {
 	align-self: flex-end;
+	font-size: 21px;
 }
 
 .modal-container h3 {
 	font-size: 26px;
-	margin: 20px auto;
+	margin: 10px auto 40px;
 }
 
 /* Formulaire ajout photo */
 .form-add-photo {
+	padding: 20px 0;
+	gap: 10px;
 	background-color: #E8F1F6;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-add-photo i {
+	font-size: 76px;
+	color: #B9C5CC;
+}
+
+.add-files {
+	width: 173px;
+	height: 36px;
+    padding: 0;
+    z-index: 0;
+    margin: 0;
+    border-radius: 60px;
+	border: none;
+	background-color: #CBD6DC;
+
+}
+.add-files-input {
+	position: relative;
+	width: 173px;
+	z-index: 1;
+	opacity: 0;
+	height: 36px;
+
+}
+.add-files-txt {
+	position: relative;
+	bottom: 25px;
+	z-index: 0;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: 'Work Sans';
+	color: #306685;
+}
+
+.add-files-txt-infos {
+	font-size: 10px;
+	font-weight: 400;
 }
 
 .content-container {
