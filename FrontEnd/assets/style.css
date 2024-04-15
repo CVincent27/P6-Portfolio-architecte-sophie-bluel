@@ -404,14 +404,6 @@ form a {
 	height: 140px;
 }
 
-hr {
-	width: 100%;
-}
-
-.btn-add-photo {
-	width: 240px;
-}
-
 .fa-trash-can {
 	position: relative;
 	top: -135px;
@@ -421,3 +413,31 @@ hr {
 	background-color: black;
 	border-radius: 2px;
 }
+
+#add-photo {
+	width: 100%;
+	margin: 0;
+}
+
+#add-photo-select {
+	margin: 2em 0 1em;
+	
+}
+
+#select-categorie {
+	border: none;
+	height: 51px;
+	margin-bottom: 40px;
+}
+
+
+
+
+hr {
+	width: 100%;
+}
+
+.btn-add-photo {
+	width: 240px;
+}
+
