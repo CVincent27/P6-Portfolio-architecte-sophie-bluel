@@ -38,6 +38,7 @@ export async function displayWorksModal() {
 }
 displayWorksModal()
 
+
 // ---- Seconde modale ----
 
 // récupère la seconde modale
