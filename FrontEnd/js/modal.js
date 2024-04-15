@@ -1,4 +1,4 @@
-import { getWorks, deleteWork } from './service.js';
+import { getWorks, deleteWork, getCategories } from './service.js';
 
 // ---- Première modale ----
 
@@ -56,6 +56,7 @@ btnOpenSecondModal.addEventListener("click", function () {
 
 
 //fonctionnement modale
+
 // Open modale
 var btnOpenModal = document.getElementById("modal-projet-btn");
 
@@ -92,4 +93,26 @@ btnBackModal.addEventListener("click", function () {
     modalProjetPhoto.close();
     modalProjet.showModal();
 });
+
+// récupérer et afficher les catégories dans le select
+async function CategoriesSelect() {
+    try {
+        const categories = await getCategories(); //
+        const selectCategorieFormAddPhoto = document.getElementById("select-categorie");
+
+        // delete les anciennes options du select
+        selectCategorieFormAddPhoto.innerHTML = "";
+
+        // ajoute chaque categories dans une option
+        categories.forEach(categorie => {
+            const optionForm = document.createElement("option");
+            optionForm.value = categorie.id;
+            optionForm.innerText = categorie.name;
+            selectCategorieFormAddPhoto.appendChild(optionForm);
+        });
+    } catch (error) {
+        console.error("Une erreur est survenue lors de la récupération des catégories", error);
+    }
+}
+CategoriesSelect();
 
