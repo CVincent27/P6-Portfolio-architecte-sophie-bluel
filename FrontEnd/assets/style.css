@@ -401,7 +401,7 @@ form a {
 	grid-column-gap: 10px;
 	grid-row-gap: 20px;
 	margin: auto;
-	padding: 40px 0 20px 0;
+	padding: 20px 0 40px 0;
 }
 
 .gallery-modal img {
@@ -409,10 +409,14 @@ form a {
 	height: 140px;
 }
 
+.work-figure {
+    position: relative;
+}
+
 .fa-trash-can {
-	position: relative;
-	top: -135px;
-	left: 88px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
 	padding: 5px;
 	color: white;
 	background-color: black;
