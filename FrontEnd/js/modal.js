@@ -20,13 +20,13 @@ modalContainer.append(galleryModalContainer);
     const figure = document.createElement("figure");
     const img = document.createElement("img");
     const removeBtn = document.createElement("i");
+    figure.className = "work-figure"
     img.src = work.imageUrl;
     removeBtn.className = "fa-solid fa-trash-can";
     figure.append(img);
     figure.append(removeBtn);
     const galleryModal = document.querySelector(".gallery-modal");
     galleryModal.appendChild(figure);
-    // TODO: mettre la gallery au dessus de l'input
     removeBtn.addEventListener("click", async () => {
         await deleteWork(work.id)
         figure.remove()
@@ -41,6 +41,11 @@ export async function displayWorksModal() {
         createWorksModal(work);
     });
 }
+// Placer la div de classe "gallery-modal" en première position dans le parent
+const contentContainer = document.querySelector(".content-container");
+const firstChild = contentContainer.firstChild;
+contentContainer.insertBefore(galleryModalContainer, firstChild);
+
 displayWorksModal()
 
 // fonctionnement modale
@@ -100,7 +105,6 @@ btnOpenSecondModal.addEventListener("click", function () {
 
 // upload img et verif taille et type de fichier
 const newImage = document.querySelector("#myfile");
-var uploadedImage = "";
 
 newImage.addEventListener("change", function () {
     spanElement.className = "";
@@ -108,7 +112,7 @@ newImage.addEventListener("change", function () {
     const reader = new FileReader();
     const type = document.getElementById("myfile").files[0].type;
     if (type !== "image/png" && type !== "image/jpeg" && type !== "image/jpg") {
-        // Affichage d'une erreur si le type de fichier n'est pas pris en charge
+        console.log("Mauvais format");
     } else {
         reader.addEventListener("load", () => {
             // Cacher la div de classe "form-upload-photo"
@@ -129,13 +133,6 @@ newImage.addEventListener("change", function () {
         reader.readAsDataURL(this.files[0]);
     }
 });
-
-
-
-
-
-
-
 
 // récupérer et afficher les catégories dans le select
 async function CategoriesSelect() {
