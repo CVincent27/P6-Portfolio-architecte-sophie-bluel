@@ -330,7 +330,7 @@ form a {
 }
 
 /* Formulaire ajout photo */
-.form-add-photo {
+.container-add-photo {
 
 	gap: 10px;
 	background-color: #E8F1F6;
@@ -340,6 +340,7 @@ form a {
 }
 
 .form-upload-photo {
+	margin: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -432,23 +433,25 @@ form a {
 	width: 35%;
 }
 
-#add-photo-select {
-	margin: 2em 0 1em;
-	
-}
-
 #select-categorie {
 	border: none;
 	height: 51px;
 	margin-bottom: 40px;
 }
 
-
 hr {
 	width: 100%;
 }
 
-.btn-add-photo {
+#btn-add-photo {
+	width: 240px;
+}
+#btn-submit-form {
+	width: 240px;
+	background-color: #A7A7A7;
+}
+#valider-form {
+	background-color: #1D6154;
 	width: 240px;
 }
 
