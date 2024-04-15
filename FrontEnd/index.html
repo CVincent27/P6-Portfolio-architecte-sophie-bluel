@@ -27,7 +27,7 @@
 				<div class="gallery-modal"></div>
 
 				<hr />
-				<input type="submit" class="btn-add-photo" value="Ajouter une photo">
+				<input type="submit" class="btn-add-photo" id="btn-add-photo" value="Ajouter une photo">
 			</div>
 		</div>
 	</dialog>
@@ -41,28 +41,26 @@
 			<h3>Ajout photo</h3>
 
 			<div class="content-container" id="form-photo">
-				<div class="form-add-photo" id="upload-photo">
-					<div class="form-upload-photo">
+				<div class="container-add-photo" id="container-photo">
+					<form class="form-upload-photo">
 						<i class="fa-regular fa-image"></i>
 						<button class="add-files">
 							<input type="file" class="add-files-input" id="myfile">
 							<label class="add-files-txt">+ Ajouter photo</label>
 						</button>
 						<p class="add-files-txt-infos">jpg, png : 4mo max</p>
-					</div>
+					</form>
 				</div>
+
 				<form method="post" id="add-photo">
-					<label id="add-photo-select">Titre</label>
-					<input type="text">
+					<label for="title">Titre</label>
+					<input type="text" name="title" id="title">
 
-					<label id="add-photo-select">Catégorie</label>
+					<label for="categorie">Catégorie</label>
 					<select name="categorie" id="select-categorie"></select>
-
+					<hr />
+					<input type="submit" class="btn-submit-form" id="btn-submit-form" value="Valider">
 				</form>
-
-			
-				<hr />
-				<input type="submit" class="btn-add-photo" value="Valider">
 			</div>
 		</div>
 	</dialog>
