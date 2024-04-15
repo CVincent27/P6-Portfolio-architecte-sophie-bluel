@@ -41,14 +41,15 @@
 			<h3>Ajout photo</h3>
 
 			<div class="content-container" id="form-photo">
-				<div class="form-add-photo">
-					<i class="fa-regular fa-image"></i>
-					<button class="add-files">
-						<input type="file" class="add-files-input">
-						<label class="add-files-txt">+ Ajouter photo</label>
-					</button>
-					<p class="add-files-txt-infos">jpg, png : 4mo max</p>
-
+				<div class="form-add-photo" id="upload-photo">
+					<div class="form-upload-photo">
+						<i class="fa-regular fa-image"></i>
+						<button class="add-files">
+							<input type="file" class="add-files-input" id="myfile">
+							<label class="add-files-txt">+ Ajouter photo</label>
+						</button>
+						<p class="add-files-txt-infos">jpg, png : 4mo max</p>
+					</div>
 				</div>
 				<form method="post" id="add-photo">
 					<label id="add-photo-select">Titre</label>
