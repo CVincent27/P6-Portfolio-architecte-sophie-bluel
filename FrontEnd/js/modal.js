@@ -5,6 +5,7 @@ let spanElement = document.createElement("span");
 spanElement.innerText = "";
 spanElement.className = "";
 
+
 // ---- Première modale ----
 
 // récupération de la modale html
@@ -104,9 +105,9 @@ btnOpenSecondModal.addEventListener("click", function () {
 });
 
 // upload img et verif taille et type de fichier
-const newImage = document.querySelector("#myfile");
+const newWork = document.querySelector("#myfile");
 
-newImage.addEventListener("change", function () {
+newWork.addEventListener("change", function () {
     spanElement.className = "";
     spanElement.innerText = "";
     const reader = new FileReader();
@@ -125,7 +126,7 @@ newImage.addEventListener("change", function () {
             imgElement.id = "display-image";
 
             // Récupérer la div de class "add-form-photo"
-            const formAddPhotoDiv = document.querySelector(".form-add-photo");
+            const formAddPhotoDiv = document.querySelector(".container-add-photo");
 
             // Insérer la balise img dans la div de class "add-form-photo"
             formAddPhotoDiv.appendChild(imgElement);
@@ -152,4 +153,32 @@ async function CategoriesSelect() {
     }
 }
 CategoriesSelect();
+
+// Check si le form est correct (changement couleur bouton ajout)
+
+const formUploadPhoto = document.getElementById("container-photo");
+const btnFormAddPhoto = document.getElementById("btn-submit-form");
+
+function checkForm() {
+    // creation objet newWork pour la validation du formulaire
+    const newWork = {
+        imageUrl: document.querySelector("input[type=file]").value,
+        title: document.querySelector("[name ='title']").value,
+        categoryId: document.querySelector("select[name='categorie']").value,
+    };
+
+    // check si tous les champs sont remplis
+    if (newWork.imageUrl && newWork.title && newWork.categoryId) {
+        // si oui
+        btnFormAddPhoto.id = "valider-form";
+    } else {
+        // si non id d'origine
+        btnFormAddPhoto.id = "btn-submit-form";
+    }
+}
+
+// écouter les event à chaque modif du form
+formUploadPhoto.addEventListener("change" && "input", checkForm);
+document.querySelector("[name ='title']").addEventListener("input", checkForm);
+document.querySelector("select[name='categorie']").addEventListener("change", checkForm);
 
