@@ -331,7 +331,7 @@ form a {
 
 /* Formulaire ajout photo */
 .form-add-photo {
-	padding: 20px 0;
+
 	gap: 10px;
 	background-color: #E8F1F6;
 	display: flex;
@@ -339,9 +339,14 @@ form a {
     align-items: center;
 }
 
-.form-add-photo i {
+.form-upload-photo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
 	font-size: 76px;
 	color: #B9C5CC;
+	padding: 20px 0;
 }
 
 .add-files {
@@ -419,6 +424,10 @@ form a {
 	margin: 0;
 }
 
+#display-image {
+	width: 35%;
+}
+
 #add-photo-select {
 	margin: 2em 0 1em;
 	
@@ -429,8 +438,6 @@ form a {
 	height: 51px;
 	margin-bottom: 40px;
 }
-
-
 
 
 hr {
