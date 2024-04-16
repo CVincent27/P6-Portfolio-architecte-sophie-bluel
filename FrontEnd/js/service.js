@@ -37,8 +37,9 @@ export async function deleteWork(id) {
         return await responseDeleteWork;
 
     } catch (error) {
-        
+
     }
+    
 }
 
 // test ajout travaux
@@ -51,6 +52,7 @@ export async function addWork(formData) {
             },
             body: formData,
         });
+
         return responseFormData;
     } catch (error) {
     }
