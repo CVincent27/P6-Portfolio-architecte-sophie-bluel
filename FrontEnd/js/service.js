@@ -37,7 +37,21 @@ export async function deleteWork(id) {
         return await responseDeleteWork;
 
     } catch (error) {
-
+        
     }
-    
+}
+
+// test ajout travaux
+export async function addWork(formData) {
+    try {
+        const responseFormData = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("Token"),
+            },
+            body: formData,
+        });
+        return responseFormData;
+    } catch (error) {
+    }
 }
