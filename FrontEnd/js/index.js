@@ -69,7 +69,7 @@ displayCategories();
 
 // Affichage
 const token = localStorage.getItem("Token");
-console.log(token)
+// console.log(token)
 
 if (token) {
     const modeEdition = document.querySelectorAll(".edition-mode");
