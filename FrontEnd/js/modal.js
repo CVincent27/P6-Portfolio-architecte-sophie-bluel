@@ -1,10 +1,11 @@
-import { getWorks, deleteWork, getCategories } from './service.js';
+import { getWorks, deleteWork, getCategories, addWork } from './service.js';
 
 //pour affichage message erreur
 let spanElement = document.createElement("span");
 spanElement.innerText = "";
 spanElement.className = "";
 
+let works = [];
 
 // ---- Première modale ----
 
@@ -17,7 +18,7 @@ modalProjet.append(modalContainer);
 modalContainer.append(galleryModalContainer);
 
 // Affichage et suppr des travaux
- function createWorksModal(work) {
+function createWorksModal(work) {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
     const removeBtn = document.createElement("i");
@@ -32,7 +33,7 @@ modalContainer.append(galleryModalContainer);
         await deleteWork(work.id)
         figure.remove()
     })
-    
+
 }
 
 // Afficher les travaux dans la modale
@@ -155,7 +156,6 @@ async function CategoriesSelect() {
 CategoriesSelect();
 
 // Check si le form est correct (changement couleur bouton ajout)
-
 const formUploadPhoto = document.getElementById("container-photo");
 const btnFormAddPhoto = document.getElementById("btn-submit-form");
 
@@ -182,3 +182,41 @@ formUploadPhoto.addEventListener("change" && "input", checkForm);
 document.querySelector("[name ='title']").addEventListener("input", checkForm);
 document.querySelector("select[name='categorie']").addEventListener("change", checkForm);
 
+
+// Envoie des donnée du form sur l'API
+
+btnFormAddPhoto.addEventListener("click", async function (e) {
+    e.preventDefault();
+    
+    // Création de formData
+    const formData = new FormData();
+    formData.append("image", document.querySelector("input[type=file]").files[0]);
+    formData.append("title", document.querySelector("[name ='title']").value);
+    formData.append("category", document.querySelector("select[name='categorie']").value);
+
+    try {
+        // Appel de la fonction addWork pour envoyer les données à l'API
+        const responseFormData = await addWork(formData);
+
+        // Vérification de la réponse du serveur
+        if (responseFormData.ok) {
+            // Réponse OK, traitement des données
+            const newWork = await responseFormData.json();
+
+            // Ajout du nouveau travail à la liste et mise à jour de l'affichage
+            works.push(newWork);
+            const galleryModalContainer = document.querySelector(".gallery-modal");
+            galleryModalContainer.innerHTML = "";
+            displayWorksModal(works);
+            // const portfolioGallery = document.querySelector(".gallery");
+
+
+            // Fermeture des modales
+            modalProjetPhoto.close();
+            modalProjet.close();
+
+        }
+    } catch (error) {
+        console.error("Une erreur est survenue lors de l'ajout du travail :", error);
+    }
+});
