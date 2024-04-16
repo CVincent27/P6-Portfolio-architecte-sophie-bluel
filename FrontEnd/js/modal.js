@@ -1,4 +1,5 @@
 import { getWorks, deleteWork, getCategories, addWork } from './service.js';
+import { displayWorks } from './index.js'
 
 //pour affichage message erreur
 let spanElement = document.createElement("span");
@@ -17,32 +18,47 @@ const galleryModalContainer = document.querySelector(".gallery-modal");
 modalProjet.append(modalContainer);
 modalContainer.append(galleryModalContainer);
 
-// Affichage et suppr des travaux
+// Fonction pour ajouter un travail à la modale
 function createWorksModal(work) {
     const figure = document.createElement("figure");
     const img = document.createElement("img");
     const removeBtn = document.createElement("i");
-    figure.className = "work-figure"
+    figure.className = "work-figure";
     img.src = work.imageUrl;
     removeBtn.className = "fa-solid fa-trash-can";
-    figure.append(img);
-    figure.append(removeBtn);
+    figure.appendChild(img);
+    figure.appendChild(removeBtn);
     const galleryModal = document.querySelector(".gallery-modal");
     galleryModal.appendChild(figure);
-    removeBtn.addEventListener("click", async () => {
-        await deleteWork(work.id)
-        figure.remove()
-    })
+    const gallery = document.querySelector(".gallery");
 
+    removeBtn.addEventListener("click", async () => {
+        try {
+            await deleteWork(work.id);
+            figure.remove();
+            works = await getWorks();
+            gallery.innerHTML = '';
+            displayWorks(works);
+            console.log(works);
+        } catch (error) {
+            console.error("Une erreur est survenue lors de la suppression du travail depuis la modale :", error);
+        }
+    });
+    
 }
 
 // Afficher les travaux dans la modale
 export async function displayWorksModal() {
-    const arrayWorks = await getWorks();
-    arrayWorks.forEach(work => {
-        createWorksModal(work);
-    });
+    try {
+        const arrayWorks = await getWorks();
+        arrayWorks.forEach(work => {
+            createWorksModal(work);
+        });
+    } catch (error) {
+        console.error("Une erreur est survenue lors de l'affichage des travaux dans la modale :", error);
+    }
 }
+
 // Placer la div de classe "gallery-modal" en première position dans le parent
 const contentContainer = document.querySelector(".content-container");
 const firstChild = contentContainer.firstChild;
@@ -208,12 +224,13 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
             const galleryModalContainer = document.querySelector(".gallery-modal");
             galleryModalContainer.innerHTML = "";
             displayWorksModal(works);
+
             // const portfolioGallery = document.querySelector(".gallery");
-
-
             // Fermeture des modales
             modalProjetPhoto.close();
             modalProjet.close();
+            displayWorks(works);
+            
 
         }
     } catch (error) {
