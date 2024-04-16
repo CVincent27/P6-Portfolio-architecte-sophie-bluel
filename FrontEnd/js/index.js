@@ -26,7 +26,7 @@ function createCategoryBtn(category) {
 }
 
 // Afficher les travaux
-async function displayWorks(works) {
+export async function displayWorks(works) {
     works.forEach(createWorkFigure)
 }
 displayWorks(arrayWorks);
@@ -69,7 +69,7 @@ displayCategories();
 
 // Affichage
 const token = localStorage.getItem("Token");
-// console.log(token)
+console.log(token)
 
 if (token) {
     const modeEdition = document.querySelectorAll(".edition-mode");
