@@ -199,28 +199,27 @@ document.querySelector("[name ='title']").addEventListener("input", checkForm);
 document.querySelector("select[name='categorie']").addEventListener("change", checkForm);
 
 
-// // TEST Fonction pour reset le form
-// function resetForm() {
-//     // Récupérer les éléments à reset
-//     const imgElement = document.getElementById("display-image");
-//     const formUploadPhotoDiv = document.querySelector(".form-upload-photo");
-//     // Vérifier si l'élément existe
-//     if (imgElement) {
-//         // Rétablir l'affichage du formulaire 
-//         formUploadPhotoDiv.style.display = "";
-//         formUploadPhotoDiv.reset();
-
-//         // Supprimer l'élément de prévisualisation de l'image
-//         imgElement.remove();
-//     }
-// }
-// // Attacher un gestionnaire d'événements à l'événement close de la modal
-// modalProjetPhoto.addEventListener("close", function() {
-//     // Appeler la fonction pour supprimer l'élément de prévisualisation de l'image
-//     resetForm();
-//     document.getElementById("add-photo").reset();
-// });
-
+// TEST Fonction pour reset le form
+function resetForm() {
+    // Récupére les éléments à reset
+    const imgElement = document.getElementById("display-image");
+    const formUploadPhotoDiv = document.querySelector(".form-upload-photo");
+    const secondForm = document.getElementById("add-photo");
+    // Vérif si l'élément existe
+    if (imgElement) {
+        // reset display form
+        formUploadPhotoDiv.style.display = "";
+        formUploadPhotoDiv.reset();
+        // suppri img
+        imgElement.remove();
+    } if (secondForm) {
+        secondForm.reset();
+    }
+}
+modalProjetPhoto.addEventListener("close", function () {
+    resetForm();
+    checkForm();
+});
 
 // Envoie des donnée du form sur l'API
 btnFormAddPhoto.addEventListener("click", async function (e) {
@@ -239,13 +238,6 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
         if (responseFormData.ok) {
             // Réponse OK traitement des données
             const newWork = await responseFormData.json();
-
-            // Réinitialiser le formulaire et effacer l'image prévisualisée
-            clearImagePreview();
-            // Réinitialiser le formulaire
-            document.getElementById("container-photo").reset();
-
-
             // Ajout work + update 
             works.push(newWork);
             works = await getWorks();
@@ -259,10 +251,11 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
             displayWorks(works);
             modalProjetPhoto.close();
             modalProjet.close();
+            resetForm();
             console.log(works);
         }
     } catch (error) {
-        console.error("Une erreur est survenue lors de l'ajout du travail :", error);
+        console.error("Une erreur est survenue lors de l'ajout", error);
     }
 });
 
