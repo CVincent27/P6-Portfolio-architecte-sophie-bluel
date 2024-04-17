@@ -42,7 +42,7 @@ async function filterCategories(e) {
         btn.classList.remove('select');
     });
 
-    // add select class
+    // ajout class select
     e.target.classList.add('select');
     
     if (btnId !== "0") {
