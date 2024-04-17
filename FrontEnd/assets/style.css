@@ -233,14 +233,18 @@ form a {
 }
 
 /* message erreur */
-.message-error-login {
+.message-error {
 	background-color: white;
 	color: #D65353;
 	padding: 4%0;
-	font-weight: 700;
+	font-weight: 400;
 	text-align: center;
 	width: 100%;
 	margin : 10px 0 10px 0;
+}
+
+#login-error {
+	font-weight: 700;
 }
 
 
