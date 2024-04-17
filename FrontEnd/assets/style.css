@@ -287,6 +287,14 @@ form a {
 	margin: 0 auto;
 }
 
+#login {
+	max-width: 1440px;
+    margin: 0 auto;
+    min-height: 90vh;
+}
+
+
+
 /* Btn édition portfolio */
 #edition-portfolio {
 	margin-bottom: 2em;
@@ -459,3 +467,9 @@ hr {
 	width: 240px;
 }
 
+/* Footer */
+.login-footer {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
