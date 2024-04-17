@@ -185,19 +185,16 @@ function checkForm() {
 
     // check si tous les champs sont remplis
     if (newWork.imageUrl && newWork.title && newWork.categoryId) {
-        // si oui
         btnFormAddPhoto.id = "valider-form";
     } else {
-        // si non id d'origine
         btnFormAddPhoto.id = "btn-submit-form";
     }
 }
 
-// écouter les event à chaque modif du form
+// écouteur event à chaque modif du form
 formUploadPhoto.addEventListener("change" && "input", checkForm);
 document.querySelector("[name ='title']").addEventListener("input", checkForm);
 document.querySelector("select[name='categorie']").addEventListener("change", checkForm);
-
 
 // TEST Fonction pour reset le form
 function resetForm() {
