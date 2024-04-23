@@ -21,7 +21,6 @@ form.addEventListener("submit", async function (event) {
         email: inputEmail.value,
         password: inputPassword.value,
     };
-    // console.log(login);
 
     // vérifie que les champs ne sont pas vide
     if (!login.email || !login.password) {

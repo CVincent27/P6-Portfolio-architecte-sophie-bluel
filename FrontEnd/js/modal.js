@@ -67,7 +67,6 @@ contentContainer.insertBefore(galleryModalContainer, firstChild);
 displayWorksModal()
 
 // fonctionnement modale
-
 // Open modale
 var btnOpenModal = document.getElementById("modal-projet-btn");
 
@@ -82,7 +81,6 @@ var btnBackModal = document.getElementById("modal-back");
 btnOpenModal.addEventListener("click", function () {
     modalProjet.showModal();
 });
-
 // fermeture 1ere modale
 btnCloseFirstModal.addEventListener("click", function () {
     modalProjet.close();
@@ -91,14 +89,12 @@ btnCloseFirstModal.addEventListener("click", function () {
 btnCloseSecondModal.addEventListener("click", function () {
     modalProjetPhoto.close();
 });
-
 // fermeture de la modale si click en dehors
 window.addEventListener("click", function (event) {
     if (event.target == modalProjet || event.target == modalProjetPhoto) {
         event.target.close();
     }
 });
-
 // revenir en arrière (2nd -> 1st)
 btnBackModal.addEventListener("click", function () {
     modalProjetPhoto.close();
@@ -107,12 +103,10 @@ btnBackModal.addEventListener("click", function () {
 
 
 // ---- Seconde modale ----
-
 // récupère la seconde modale
 const modalProjetPhoto = document.querySelector("#modal-projet-photo");
 // ouvrir 2nd depuis 1ere modale
 const btnOpenSecondModal = document.querySelector(".btn-add-photo");
-
 // ouverture de la seconde modale (via 1ere modal)
 btnOpenSecondModal.addEventListener("click", function () {
     // Ferme la première modale
@@ -123,7 +117,6 @@ btnOpenSecondModal.addEventListener("click", function () {
 
 // upload img et verif taille et type de fichier
 const newWork = document.querySelector("#myfile");
-
 newWork.addEventListener("change", function () {
     spanElement.className = "";
     spanElement.innerText = "";
@@ -196,7 +189,7 @@ formUploadPhoto.addEventListener("change" && "input", checkForm);
 document.querySelector("[name ='title']").addEventListener("input", checkForm);
 document.querySelector("select[name='categorie']").addEventListener("change", checkForm);
 
-// TEST Fonction pour reset le form
+// reset le form
 function resetForm() {
     // Récupére les éléments à reset
     const imgElement = document.getElementById("display-image");
@@ -207,7 +200,7 @@ function resetForm() {
         // reset display form
         formUploadPhotoDiv.style.display = "";
         formUploadPhotoDiv.reset();
-        // suppri img
+        // del img
         imgElement.remove();
     } if (secondForm) {
         secondForm.reset();
