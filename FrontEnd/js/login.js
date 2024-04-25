@@ -43,7 +43,5 @@ form.addEventListener("submit", async function (event) {
             errorMsg.innerText = "Erreur dans l'identifiant ou le mot de passe";
         };
     };
-
-    // Ajoutez le message d'erreur à l'élément inputPassword
     inputPassword.insertAdjacentElement("afterend", errorMsg);
 });

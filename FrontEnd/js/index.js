@@ -65,9 +65,7 @@ async function displayCategories() {
 }
 displayCategories();
 
-// test mode edition
-
-// Affichage
+// Mode edition
 const token = localStorage.getItem("Token");
 console.log(token)
 
