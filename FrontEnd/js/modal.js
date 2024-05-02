@@ -98,11 +98,14 @@ btnOpenSecondModal.addEventListener("click", function () {
 const newWork = document.querySelector("#myfile");
 newWork.addEventListener("change", function () {
     const reader = new FileReader();
-    const type = document.getElementById("myfile").files[0].type;
+    const file = document.getElementById("myfile").files[0];
+    const type = file.type;
+    const size = file.size;
+    const maxSize = 2 * 1024 * 1024; // 2 MB en bytes
     // verif size et modif message
 
-    if (type !== "image/png" && type !== "image/jpeg") {
-        alert("Mauvais format");
+    if (type !== "image/png" && type !== "image/jpeg" || size > maxSize ) {
+        alert("Mauvais format ou taille trop grande");
         document.getElementById("myfile").value = "";
     } else {
         reader.addEventListener("load", () => {
@@ -159,6 +162,7 @@ function checkForm() {
     // check si tous les champs sont remplis
     if (newWork.imageUrl && newWork.title && newWork.categoryId) {
         btnFormAddPhoto.disabled = false;
+        
     } else {
         btnFormAddPhoto.disabled = true ;
     }
@@ -213,6 +217,8 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
             modalProjetPhoto.close();
             modalProjet.close();
             resetForm();
+
+            btnFormAddPhoto.disabled = true;
         }
     } catch (error) {
         console.error("Une erreur est survenue lors de l'ajout", error);
