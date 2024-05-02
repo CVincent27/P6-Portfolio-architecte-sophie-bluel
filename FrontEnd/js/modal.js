@@ -1,10 +1,7 @@
 import { getWorks, deleteWork, getCategories, addWork } from './service.js';
 import { displayWorks } from './index.js'
 
-//pour affichage message erreur
-let spanElement = document.createElement("span");
-spanElement.innerText = "";
-spanElement.className = "";
+
 
 let works = [];
 
@@ -118,8 +115,6 @@ btnOpenSecondModal.addEventListener("click", function () {
 // upload img et verif taille et type de fichier
 const newWork = document.querySelector("#myfile");
 newWork.addEventListener("change", function () {
-    spanElement.className = "";
-    spanElement.innerText = "";
     const reader = new FileReader();
     const type = document.getElementById("myfile").files[0].type;
     if (type !== "image/png" && type !== "image/jpeg" && type !== "image/jpg") {

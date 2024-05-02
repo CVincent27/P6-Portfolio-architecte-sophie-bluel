@@ -16,7 +16,7 @@ form.addEventListener("submit", async function (event) {
     let inputEmail = document.querySelector("[name='email']");
     let inputPassword = document.querySelector("[name='password']");
 
-    // récupère les valeurs dans login
+    // récupère les valeurs
     const login = {
         email: inputEmail.value,
         password: inputPassword.value,
