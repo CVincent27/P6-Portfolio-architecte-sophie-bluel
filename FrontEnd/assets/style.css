@@ -224,6 +224,17 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+input[type="button"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
 form a {
 	display: flex;
 	justify-content: center;
@@ -460,10 +471,10 @@ hr {
 #btn-submit-form {
 	width: 240px;
 	background-color: #A7A7A7;
-}
-#valider-form {
-	background-color: #1D6154;
-	width: 240px;
+
+	&:not([disabled]) {
+        background-color: #1D6154
+    }
 }
 
 /* Footer */
