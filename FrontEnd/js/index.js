@@ -2,11 +2,13 @@ import { getWorks, getCategories } from "./service.js"
 
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
+// mettre try catch arrayworks
 const arrayWorks = await getWorks()
 let filterButtons;
 
-function createWorkFigure(work) {
+export function createWorkFigure(work) {
     const figure = document.createElement("figure")
+    figure.setAttribute("data-id", work.id)
     const img = document.createElement("img")
     const figcaption = document.createElement("figcaption")
     img.src = work.imageUrl;
@@ -22,18 +24,16 @@ function createCategoryBtn(category) {
     btn.id = category.id;
     btn.classList.add("filter-btn");
     filter.appendChild(btn);
-    btn.addEventListener("click", filterCategories)
 }
 
 // Afficher les travaux
-export async function displayWorks(works) {
+function displayWorks(works) {
     works.forEach(createWorkFigure)
 }
 displayWorks(arrayWorks);
 
 // ----- Filtrer les boutons par catégories -----
 async function filterCategories(e) {
-    let filterWorks = await getWorks();
     let btnId = e.target.id;
     gallery.innerHTML = "";
 
@@ -44,9 +44,11 @@ async function filterCategories(e) {
 
     // ajout class select
     e.target.classList.add('select');
+
+    let filterWorks = arrayWorks;
     
     if (btnId !== "0") {
-        filterWorks = filterWorks.filter((work) => {
+        filterWorks = arrayWorks.filter((work) => {
             return work.categoryId == btnId;
         });
     }
@@ -54,6 +56,7 @@ async function filterCategories(e) {
 }
 
 // ----- Récupérer et afficher les categories -----
+// try catch
 async function displayCategories() {
     const arrayCategories = await getCategories()
     arrayCategories.forEach(createCategoryBtn)

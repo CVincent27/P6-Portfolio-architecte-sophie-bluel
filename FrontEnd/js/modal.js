@@ -1,19 +1,9 @@
 import { getWorks, deleteWork, getCategories, addWork } from './service.js';
-import { displayWorks } from './index.js'
-
-
-
-let works = [];
+import { createWorkFigure } from './index.js';
 
 // ---- Première modale ----
-
 // récupération de la modale html
 const modalProjet = document.querySelector("#modal-projet");
-const modalContainer = document.querySelector(".modal-container");
-const galleryModalContainer = document.querySelector(".gallery-modal");
-
-modalProjet.append(modalContainer);
-modalContainer.append(galleryModalContainer);
 
 // Fonction pour ajouter un travail à la modale
 function createWorksModal(work) {
@@ -27,16 +17,14 @@ function createWorksModal(work) {
     figure.appendChild(removeBtn);
     const galleryModal = document.querySelector(".gallery-modal");
     galleryModal.appendChild(figure);
-    const gallery = document.querySelector(".gallery");
 
     removeBtn.addEventListener("click", async () => {
         try {
             await deleteWork(work.id);
             figure.remove();
-            gallery.innerHTML = '';
-            works = await getWorks();
-            displayWorks(works);
-            console.log(works);
+            const galleryWork = document.querySelector("[data-id='" + work.id + "']");
+            galleryWork.remove();
+
         } catch (error) {
             console.error("Une erreur est survenue lors de la suppression du travail depuis la modale :", error);
         }
@@ -55,12 +43,6 @@ export async function displayWorksModal() {
         console.error("Une erreur est survenue lors de l'affichage des travaux dans la modale :", error);
     }
 }
-
-// Placer la div de classe "gallery-modal" en première position dans le parent
-const contentContainer = document.querySelector(".content-container");
-const firstChild = contentContainer.firstChild;
-contentContainer.insertBefore(galleryModalContainer, firstChild);
-
 displayWorksModal()
 
 // fonctionnement modale
@@ -117,8 +99,11 @@ const newWork = document.querySelector("#myfile");
 newWork.addEventListener("change", function () {
     const reader = new FileReader();
     const type = document.getElementById("myfile").files[0].type;
-    if (type !== "image/png" && type !== "image/jpeg" && type !== "image/jpg") {
-        console.log("Mauvais format");
+    // verif size et modif message
+
+    if (type !== "image/png" && type !== "image/jpeg") {
+        alert("Mauvais format");
+        document.getElementById("myfile").value = "";
     } else {
         reader.addEventListener("load", () => {
             // Cacher la div de classe "form-upload-photo"
@@ -141,7 +126,7 @@ newWork.addEventListener("change", function () {
 });
 
 // récupérer et afficher les catégories dans le select
-async function CategoriesSelect() {
+async function categoriesSelect() {
     try {
         const categories = await getCategories(); //
         const selectCategorieFormAddPhoto = document.getElementById("select-categorie");
@@ -157,7 +142,7 @@ async function CategoriesSelect() {
         console.error("Une erreur est survenue lors de la récupération des catégories", error);
     }
 }
-CategoriesSelect();
+categoriesSelect();
 
 // Check si le form est correct (changement couleur bouton ajout)
 const formUploadPhoto = document.getElementById("container-photo");
@@ -173,9 +158,9 @@ function checkForm() {
 
     // check si tous les champs sont remplis
     if (newWork.imageUrl && newWork.title && newWork.categoryId) {
-        btnFormAddPhoto.id = "valider-form";
+        btnFormAddPhoto.disabled = false;
     } else {
-        btnFormAddPhoto.id = "btn-submit-form";
+        btnFormAddPhoto.disabled = true ;
     }
 }
 
@@ -203,7 +188,6 @@ function resetForm() {
 }
 modalProjetPhoto.addEventListener("close", function () {
     resetForm();
-    checkForm();
 });
 
 // Envoie des donnée du form sur l'API
@@ -223,21 +207,12 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
         if (responseFormData.ok) {
             // Réponse OK traitement des données
             const newWork = await responseFormData.json();
-            // Ajout work + update 
-            works.push(newWork);
-            works = await getWorks();
-            // update modale
-            const galleryModalContainer = document.querySelector(".gallery-modal");
-            galleryModalContainer.innerHTML = "";
-            displayWorksModal(works);
-            // update gallery
-            const gallery = document.querySelector(".gallery");
-            gallery.innerHTML = "";
-            displayWorks(works);
+
+            createWorkFigure(newWork);
+            createWorksModal(newWork)
             modalProjetPhoto.close();
             modalProjet.close();
             resetForm();
-            console.log(works);
         }
     } catch (error) {
         console.error("Une erreur est survenue lors de l'ajout", error);

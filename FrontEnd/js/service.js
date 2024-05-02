@@ -57,3 +57,5 @@ export async function addWork(formData) {
     } catch (error) {
     }
 }
+
+// ajouter fonction login (enlever try catch)
