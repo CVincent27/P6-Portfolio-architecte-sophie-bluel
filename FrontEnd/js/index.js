@@ -2,8 +2,6 @@ import { getWorks, getCategories } from "./service.js"
 
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
-// mettre try catch arrayworks
-const arrayWorks = await getWorks()
 let filterButtons;
 
 export function createWorkFigure(work) {
@@ -30,7 +28,6 @@ function createCategoryBtn(category) {
 function displayWorks(works) {
     works.forEach(createWorkFigure)
 }
-displayWorks(arrayWorks);
 
 // ----- Filtrer les boutons par catégories -----
 async function filterCategories(e) {
@@ -65,13 +62,20 @@ async function displayCategories() {
         filterButtons.forEach(btn => {
             btn.addEventListener('click', filterCategories);
         });
+
+        // Mettre le bloc try...catch autour de l'appel à getWorks
+        try {
+            const arrayWorks = await getWorks();
+            displayWorks(arrayWorks);
+        } catch (error) {
+            console.error('Erreur lors de la récupération des travaux', error);
+        }
     } catch (error) {
         console.error('Erreur lors de l`affichage des catégories', error);
     }
 }
 
 displayCategories();
-
 
 // Mode edition
 const token = localStorage.getItem("Token");
@@ -82,7 +86,6 @@ if (token) {
     for (let data of modeEdition) {
         data.classList.add("active");
     };
-    // display none sur filters
     const modeEditionFilter = document.querySelector(".filters");
     modeEditionFilter.style.display = "none";
     // logout
