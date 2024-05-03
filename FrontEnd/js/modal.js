@@ -96,8 +96,7 @@ newWork.addEventListener("change", function () {
     const file = document.getElementById("myfile").files[0];
     const type = file.type;
     const size = file.size;
-    const maxSize = 2 * 1024 * 1024; // 2 MB en bytes
-    // verif size et modif message
+    const maxSize = 4 * 1024 * 1024; // 4MB
 
     if (type !== "image/png" && type !== "image/jpeg" || size > maxSize) {
         alert("Mauvais format ou taille trop grande");
@@ -143,7 +142,7 @@ async function categoriesSelect() {
 categoriesSelect();
 
 // Check si le form est correct (changement couleur bouton ajout)
-const formUploadPhoto = document.getElementById("container-photo");
+const formUploadPhoto = document.querySelector("#container-photo");
 const btnFormAddPhoto = document.getElementById("btn-submit-form");
 
 function checkForm() {
@@ -170,21 +169,33 @@ document.querySelector("select[name='categorie']").addEventListener("change", ch
 
 // reset le form
 function resetForm() {
-    // Récupére les éléments à reset
+    // Récupère les éléments à réinitialiser
     const imgElement = document.getElementById("display-image");
     const formUploadPhotoDiv = document.querySelector(".form-upload-photo");
-    const secondForm = document.getElementById("add-photo");
-    // Vérif si l'élément existe
+    const inputTitle = document.querySelector("#form-photo input[name='title']");
+    const selectCategorie = document.querySelector("#form-photo select[name='categorie']");
+    const inputFile = document.querySelector("#myfile");
+    
+    // Vérifie si l'élément existe et le réinitialise
     if (imgElement) {
-        // reset display form
-        formUploadPhotoDiv.style.display = "";
-        formUploadPhotoDiv.reset();
-        // del img
         imgElement.remove();
-    } if (secondForm) {
-        secondForm.reset();
+        formUploadPhotoDiv.style.display = "flex";
     }
+
+    // Réinitialise les champs du formulaire
+    if (inputTitle) {
+        inputTitle.value = ""; 
+    }
+    if (selectCategorie) {
+        selectCategorie.selectedIndex = 0; 
+    }
+    if (inputFile) {
+        inputFile.value = "";
+    }
+    btnFormAddPhoto.disabled = true;
 }
+
+// Ajoute un écouteur d'événements pour réinitialiser le formulaire lorsque la modale se ferme
 modalProjetPhoto.addEventListener("close", function () {
     resetForm();
 });
