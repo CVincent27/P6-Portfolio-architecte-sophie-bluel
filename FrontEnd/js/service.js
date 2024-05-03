@@ -1,74 +1,54 @@
 // Récuperer les travaux 
 export async function getWorks() {
-    try {
-        const responseWorks = await fetch("http://localhost:5678/api/works")
+    const responseWorks = await fetch("http://localhost:5678/api/works")
         .then(response => response.json());
-        return await responseWorks;
-
-    } catch (error) {
-        console.error("Une erreur est survenue pendant la récupération des travaux", error);
-
-    }
+    return await responseWorks;
 }
 
 // Récuperer les categories
 export async function getCategories() {
-    try {
-        const responseCategories = await fetch("http://localhost:5678/api/categories")
+    const responseCategories = await fetch("http://localhost:5678/api/categories")
         .then(response => response.json());
-        return await responseCategories;
-
-    } catch (error) {
-        console.error("Une erreur est survenue pendant la récupération des catégories", error);
-
-    }
+    return await responseCategories;
 }
 
 // Supprimer work
 export async function deleteWork(id) {
     try {
         const responseDeleteWork = await fetch("http://localhost:5678/api/works/" + id, {
-            method:"DELETE",
+            method: "DELETE",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("Token")
             }
         })
+            
         .then(response => response.json());
         return await responseDeleteWork;
-
     } catch (error) {
-
+        console.log(error);
     }
-    
+
 }
 
 // test ajout travaux
 export async function addWork(formData) {
-    try {
-        const responseFormData = await fetch("http://localhost:5678/api/works", {
-            method: "POST",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("Token"),
-            },
-            body: formData,
-        });
+    const responseFormData = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("Token"),
+        },
+        body: formData,
+    });
 
-        return responseFormData;
-    } catch (error) {
-    }
+    return responseFormData;
 }
 
 export async function loginUser(loginData) {
-    try {
-        const responseLogin = await fetch("http://localhost:5678/api/users/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(loginData),
-        });
-        
-        return responseLogin.json();
-    } catch (error) {
-        console.error('Erreur lors de la tentative de connexion :', error);
-    }
-}
+    const responseLogin = await fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+    });
 
+    return responseLogin.json();
+}

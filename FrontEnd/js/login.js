@@ -28,7 +28,6 @@ form.addEventListener("submit", async function (event) {
         try {
             const response = await loginUser(login);
             
-            // Vérifier si la réponse contient un token
             if (response && response.token) {
                 localStorage.setItem("Token", response.token);
                 window.location.replace("index.html");

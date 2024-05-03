@@ -19,15 +19,10 @@ function createWorksModal(work) {
     galleryModal.appendChild(figure);
 
     removeBtn.addEventListener("click", async () => {
-        try {
-            await deleteWork(work.id);
-            figure.remove();
-            const galleryWork = document.querySelector("[data-id='" + work.id + "']");
-            galleryWork.remove();
-
-        } catch (error) {
-            console.error("Une erreur est survenue lors de la suppression du travail depuis la modale :", error);
-        }
+        await deleteWork(work.id);
+        figure.remove();
+        const galleryWork = document.querySelector("[data-id='" + work.id + "']");
+        galleryWork.remove();
     });
 
 }
@@ -104,7 +99,7 @@ newWork.addEventListener("change", function () {
     const maxSize = 2 * 1024 * 1024; // 2 MB en bytes
     // verif size et modif message
 
-    if (type !== "image/png" && type !== "image/jpeg" || size > maxSize ) {
+    if (type !== "image/png" && type !== "image/jpeg" || size > maxSize) {
         alert("Mauvais format ou taille trop grande");
         document.getElementById("myfile").value = "";
     } else {
@@ -162,9 +157,9 @@ function checkForm() {
     // check si tous les champs sont remplis
     if (newWork.imageUrl && newWork.title && newWork.categoryId) {
         btnFormAddPhoto.disabled = false;
-        
+
     } else {
-        btnFormAddPhoto.disabled = true ;
+        btnFormAddPhoto.disabled = true;
     }
 }
 
@@ -224,5 +219,3 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
         console.error("Une erreur est survenue lors de l'ajout", error);
     }
 });
-
-
