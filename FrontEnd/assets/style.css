@@ -353,8 +353,9 @@ form a {
 
 /* Formulaire ajout photo */
 .container-add-photo {
-
+	width: 100%;
 	gap: 10px;
+
 	background-color: #E8F1F6;
 	display: flex;
     flex-direction: column;
@@ -362,14 +363,15 @@ form a {
 }
 
 .form-upload-photo {
-	margin: auto;
+	width: 100%;
+	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
 	font-size: 76px;
 	color: #B9C5CC;
-	padding: 20px 0;
+	margin: 0;
 }
 
 .add-files {
@@ -404,17 +406,31 @@ form a {
 .add-files-txt-infos {
 	font-size: 10px;
 	font-weight: 400;
+	color: #444444;
 }
 
 .content-container {
-	padding: 0 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.content-container-wrap {
+	display: flex;
+    /* padding: 20px; */
+    width: 80%;
+    justify-content: center;
+    flex-direction: column;
+}
+
 #form-photo {
-	align-items: normal;
+	width: 100%;
+}
+#titleinput {
+	padding: 20px 0;
+    color: #3D3D3D;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .gallery-modal {
@@ -456,9 +472,11 @@ form a {
 }
 
 #select-categorie {
+	width: 100%;
 	border: none;
 	height: 51px;
 	margin-bottom: 40px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 hr {
@@ -471,6 +489,8 @@ hr {
 #btn-submit-form {
 	width: 240px;
 	background-color: #A7A7A7;
+	height: 36px;
+    font-size: 14px;
 
 	&:not([disabled]) {
         background-color: #1D6154
