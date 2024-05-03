@@ -7,7 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
@@ -41,33 +42,35 @@
 			<h3>Ajout photo</h3>
 
 			<div class="content-container" id="form-photo">
-				<div class="container-add-photo" id="container-photo">
-					<form class="form-upload-photo">
-						<i class="fa-regular fa-image"></i>
-						<button class="add-files">
-							<input type="file" class="add-files-input" id="myfile">
-							<label class="add-files-txt">+ Ajouter photo</label>
-						</button>
-						<p class="add-files-txt-infos">jpg, png : 4mo max</p>
-					</form>
-				</div>
+				<div class="content-container-wrap">
+					<div class="container-add-photo" id="container-photo">
+						<form class="form-upload-photo">
+							<i class="fa-regular fa-image"></i>
+							<button class="add-files">
+								<input type="file" class="add-files-input" id="myfile">
+								<label class="add-files-txt">+ Ajouter photo</label>
+							</button>
+							<p class="add-files-txt-infos">jpg, png : 4mo max</p>
+						</form>
+					</div>
 
-				<form method="post" id="add-photo">
-					<label for="title">Titre</label>
+					<!-- Déplacez ces éléments à l'intérieur du premier formulaire -->
+					<label for="title" id="titleinput">Titre</label>
 					<input type="text" name="title" id="title">
 
-					<label for="categorie">Catégorie</label>
+					<label for="categorie" id="titleinput">Catégorie</label>
 					<select name="categorie" id="select-categorie"></select>
 					<hr />
-					<input type="submit" id="btn-submit-form" value="Valider" disabled>
-				</form>
+					<input type="submit" id="btn-submit-form" value="Valider" form="form-photo" disabled>
+				</div>
 			</div>
 		</div>
 	</dialog>
-	
+
+
 	<!-- Banniere mode edition-->
 	<div class="edition-mode">
-		<div id="edition-header" >
+		<div id="edition-header">
 			<i class="fa-regular fa-pen-to-square"></i>
 			<span>Mode édition</span>
 		</div>
@@ -87,13 +90,13 @@
 		<main>
 			<section id="introduction">
 				<figure>
-					<!-- ajouter alt -->
-					<img src="./assets/images/sophie-bluel.png" alt="">
+					<img src="./assets/images/sophie-bluel.png" alt="Sophie Bluel">
 				</figure>
 				<article>
 
 					<h2>Designer d'espace</h2>
-					<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la
+						livraison
 						finale du chantier.</p>
 					<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
 						couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
@@ -137,13 +140,13 @@
 			</section>
 		</main>
 	</div>
-		<footer>
-			<nav>
-				<ul>
-					<li>Mentions Légales</li>
-				</ul>
-			</nav>
-		</footer>
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
 </body>
 
 </html>
