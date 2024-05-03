@@ -56,17 +56,22 @@ async function filterCategories(e) {
 }
 
 // ----- Récupérer et afficher les categories -----
-// try catch
 async function displayCategories() {
-    const arrayCategories = await getCategories()
-    arrayCategories.forEach(createCategoryBtn)
+    try {
+        const arrayCategories = await getCategories();
+        arrayCategories.forEach(createCategoryBtn);
 
-    filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', filterCategories);
-    });
+        filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', filterCategories);
+        });
+    } catch (error) {
+        console.error('Erreur lors de l`affichage des catégories', error);
+    }
 }
+
 displayCategories();
+
 
 // Mode edition
 const token = localStorage.getItem("Token");

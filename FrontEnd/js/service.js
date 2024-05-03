@@ -58,4 +58,17 @@ export async function addWork(formData) {
     }
 }
 
-// ajouter fonction login (enlever try catch)
+export async function loginUser(loginData) {
+    try {
+        const responseLogin = await fetch("http://localhost:5678/api/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(loginData),
+        });
+        
+        return responseLogin.json();
+    } catch (error) {
+        console.error('Erreur lors de la tentative de connexion :', error);
+    }
+}
+
