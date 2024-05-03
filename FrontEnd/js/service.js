@@ -30,7 +30,7 @@ export async function deleteWork(id) {
 
 }
 
-// test ajout travaux
+// Ajout travaux
 export async function addWork(formData) {
     const responseFormData = await fetch("http://localhost:5678/api/works", {
         method: "POST",
@@ -39,10 +39,10 @@ export async function addWork(formData) {
         },
         body: formData,
     });
-
     return responseFormData;
 }
 
+// Connexion user
 export async function loginUser(loginData) {
     const responseLogin = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
