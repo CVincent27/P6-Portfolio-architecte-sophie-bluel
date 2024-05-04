@@ -14,20 +14,13 @@ export async function getCategories() {
 
 // Supprimer work
 export async function deleteWork(id) {
-    try {
-        const responseDeleteWork = await fetch("http://localhost:5678/api/works/" + id, {
-            method: "DELETE",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("Token")
-            }
-        })
-            
-        .then(response => response.json());
-        return await responseDeleteWork;
-    } catch (error) {
-        console.log(error);
-    }
-
+    const responseDeleteWork = await fetch("http://localhost:5678/api/works/" + id, {
+        method: "DELETE",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("Token")
+        },
+    });
+    return responseDeleteWork;
 }
 
 // Ajout travaux
