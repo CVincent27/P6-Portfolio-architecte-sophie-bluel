@@ -3,9 +3,8 @@ import { getWorks, getCategories } from "./service.js"
 const gallery = document.querySelector(".gallery")
 const filter = document.querySelector(".filters")
 let filterButtons;
-let arrayWorks; // Déplacez la déclaration de arrayWorks ici
+let arrayWorks;
 
-// Fonction pour créer une figure de travail
 export function createWorkFigure(work) {
     const figure = document.createElement("figure")
     figure.setAttribute("data-id", work.id)
@@ -18,7 +17,6 @@ export function createWorkFigure(work) {
     gallery.appendChild(figure);
 }
 
-// Fonction pour créer un bouton de catégorie
 function createCategoryBtn(category) {
     const btn = document.createElement("button");
     btn.textContent = category.name;
@@ -30,7 +28,7 @@ function createCategoryBtn(category) {
 // Fonction pour afficher les travaux
 async function displayWorks() {
     try {
-        arrayWorks = await getWorks(); // Assignez la valeur de getWorks à arrayWorks
+        arrayWorks = await getWorks();
         arrayWorks.forEach(createWorkFigure);
     } catch (error) {
         console.error('Erreur lors de la récupération des travaux', error);
@@ -57,7 +55,7 @@ async function filterCategories(e) {
     // ajout class select
     e.target.classList.add('select');
 
-    if (arrayWorks) { // Vérifier si arrayWorks est défini
+    if (arrayWorks) {
         let filterWorks = arrayWorks;
 
         if (btnId !== "0") {

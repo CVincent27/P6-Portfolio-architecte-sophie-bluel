@@ -194,7 +194,7 @@ function resetForm() {
     btnFormAddPhoto.disabled = true;
 }
 
-// Ajoute un écouteur d'événements pour réinitialiser le formulaire lorsque la modale se ferme
+// réinit form quand fermeture modale
 modalProjetPhoto.addEventListener("close", function () {
     resetForm();
 });
@@ -214,7 +214,6 @@ btnFormAddPhoto.addEventListener("click", async function (e) {
         const responseFormData = await addWork(formData);
 
         if (responseFormData.ok) {
-            // Réponse OK traitement des données
             const newWork = await responseFormData.json();
 
             createWorkFigure(newWork);
