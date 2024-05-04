@@ -75,7 +75,6 @@ btnBackModal.addEventListener("click", function () {
     modalProjet.showModal();
 });
 
-
 // ---- Seconde modale ----
 // récupère la seconde modale
 const modalProjetPhoto = document.querySelector("#modal-projet-photo");
