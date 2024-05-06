@@ -323,6 +323,7 @@ form a {
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0,0, 0.4);
+
 }
 
 .modal-container {
@@ -333,6 +334,12 @@ form a {
 	border-radius: 10px;
 	padding: 20px 30px;
 	margin: 150px auto;
+	overflow-y: scroll;
+	max-height: 70%;
+}
+/* cacher la barre de scroll */
+.modal-container::-webkit-scrollbar {
+    display: none;
 }
 
 .container-icon {
